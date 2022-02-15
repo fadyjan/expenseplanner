@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:expenseplanner/transaction.dart';
 import 'package:flutter/material.dart';
 import 'transaction.dart';
@@ -51,7 +53,7 @@ class MyHomePage extends StatelessWidget {
                               BoxDecoration(border: Border.all(width: 2)),
                           padding: const EdgeInsets.all(8),
                           child: Text(
-                            tx.amount.toString(),
+                            "\$${tx.amount}",
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
