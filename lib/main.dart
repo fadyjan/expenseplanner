@@ -1,8 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:expenseplanner/transaction.dart';
+import 'package:expenseplanner/widgets/new_transactions.dart';
 import 'package:flutter/material.dart';
-import 'transaction.dart';
+import './widgets/user_transactions.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,13 +17,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transcations = [
-    Transaction(id: "t1", tittle: "newshoes", date: DateTime.now(), amount: 69),
-    Transaction(
-        id: "t2", tittle: "newshoes3", date: DateTime.now(), amount: 69),
-    Transaction(
-        id: "t3", tittle: "newshoes2", date: DateTime.now(), amount: 69),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,46 +32,7 @@ class MyHomePage extends StatelessWidget {
                 color: Colors.blue,
               ),
             ),
-            Column(
-              children: transcations.map((tx) {
-                return Card(
-                  child: Row(
-                    children: [
-                      Container(
-                          margin: const EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 15,
-                          ),
-                          decoration:
-                              BoxDecoration(border: Border.all(width: 2)),
-                          padding: const EdgeInsets.all(8),
-                          child: Text(
-                            "\$${tx.amount}",
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.purple),
-                          )),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            tx.tittle,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          ),
-                          Text(
-                            tx.date.toString(),
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 10),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              }).toList(),
-            )
+            UserTransactions()
           ],
         ));
   }
