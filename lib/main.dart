@@ -22,18 +22,28 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Flutter App'),
-        ),
-        body: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              child: const Card(
-                child: const Text("This is FirstCard"),
-                color: Colors.blue,
-              ),
-            ),
-            UserTransactions()
+          actions: [
+            IconButton(
+                onPressed: null,
+                icon: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ))
           ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                child: const Card(
+                  child: const Text("This is FirstCard"),
+                  color: Colors.blue,
+                ),
+              ),
+              UserTransactions()
+            ],
+          ),
         ));
   }
 }
