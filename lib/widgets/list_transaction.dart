@@ -9,42 +9,47 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: _trans.map((tx) {
-        return Card(
-          child: Row(
-            children: [
-              Container(
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 15,
-                  ),
-                  decoration: BoxDecoration(border: Border.all(width: 2)),
-                  padding: const EdgeInsets.all(8),
-                  child: Text(
-                    "\$${tx.amount}",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.purple),
-                  )),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      height: 300,
+      child: ListView.builder(
+          itemCount: _trans.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: Row(
                 children: [
-                  Text(
-                    tx.tittle,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 15,
+                      ),
+                      decoration: BoxDecoration(border: Border.all(width: 2)),
+                      padding: const EdgeInsets.all(8),
+                      child: Text(
+                        "\$${_trans[index].amount.toStringAsFixed(2)}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.purple),
+                      )),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _trans[index].tittle,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        DateFormat().format(_trans[index].date),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 10),
+                      )
+                    ],
                   ),
-                  Text(
-                    DateFormat().format(tx.date),
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
-                  )
                 ],
               ),
-            ],
-          ),
-        );
-      }).toList(),
+            );
+          }),
     );
   }
 }
